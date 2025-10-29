@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware  
 import uvicorn
 
@@ -41,6 +42,20 @@ def obtener_articulo(articulo_id: int):
             return {"articulo": articulo}
     return {"error": f"Artículo con ID {articulo_id} no encontrado"}
 
+# Endpoint solicitado: /item/{item_id}?q=...&activo=...
+@app.get("/item/{item_id}")
+def obtener_item(item_id: int, q: Optional[str] = "", activo: bool = True):
+    return {"item_id": item_id, "q": q, "activo": activo}
+
+# Endpoint solicitado: /saludo/{nombre}
+@app.get("/saludo/{nombre}")
+def saludo(nombre: str):
+    return {"saludo": f"¡Hola, {nombre}!"}
+
+# Endpoint solicitado: /config?modo=...&version=...
+@app.get("/config")
+def obtener_config(modo: str, version: float):
+    return {"modo": modo, "version": version}
 
 
 # Ejecutar la aplicación
