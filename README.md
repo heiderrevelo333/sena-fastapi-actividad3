@@ -36,14 +36,14 @@ Este proyecto es una API REST construida con FastAPI que implementa varios endpo
 
 ## 🚀 Instalación
 
-### 1. Clonar el repositorio
+### 1️⃣ Clonar el repositorio
 
 ```bash
 git clone https://github.com/heiderrevelo333/sena-fastapi-actividad3.git
 cd sena-fastapi-actividad3
 ```
 
-### 2. Crear entorno virtual
+### 2️⃣ Crear entorno virtual
 
 ```bash
 # Windows
@@ -55,7 +55,7 @@ python3 -m venv fastapi-env
 source fastapi-env/bin/activate
 ```
 
-### 3. Instalar dependencias
+### 3️⃣ Instalar dependencias
 
 ```bash
 pip install -r requirements.txt
@@ -65,13 +65,17 @@ pip install -r requirements.txt
 
 ### Ejecutar el servidor
 
+Una vez instaladas las dependencias, puedes iniciar la aplicación de las siguientes maneras:
+
 ```bash
 # Opción 1: Usando Python directamente
-python src/main.py
+python main.py
 
-# Opción 2: Usando Uvicorn
-uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+# Opción 2: Usando Uvicorn (recomendado)
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
+
+**Nota**: El comando `uvicorn main:app --reload` es la forma estándar y recomendada para ejecutar aplicaciones FastAPI. El flag `--reload` permite que el servidor se reinicie automáticamente cuando detecta cambios en el código.
 
 El servidor estará disponible en: `http://localhost:8000`
 
@@ -248,8 +252,7 @@ GET /config?modo=produccion&version=1.5
 ```
 sena-fastapi-actividad3/
 │
-├── src/
-│   └── main.py              # Archivo principal de la aplicación
+├── main.py                  # Archivo principal de la aplicación
 │
 ├── fastapi-env/             # Entorno virtual (no incluido en git)
 │
@@ -303,10 +306,16 @@ allow_origins=["http://localhost:3000", "https://tudominio.com"]
 ```
 
 ### Puerto
-El servidor por defecto corre en el puerto 8000. Para cambiar el puerto, modifica el archivo `main.py`:
+El servidor por defecto corre en el puerto 8000. Para cambiar el puerto, puedes:
 
+1. Modificar el archivo `main.py`:
 ```python
 uvicorn.run(app, host="0.0.0.0", port=TU_PUERTO)
+```
+
+2. O especificar el puerto al ejecutar con uvicorn:
+```bash
+uvicorn main:app --reload --port 8080
 ```
 
 ## 📝 Dependencias
